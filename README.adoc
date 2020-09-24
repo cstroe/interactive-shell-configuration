@@ -1,0 +1,119 @@
+= interactive-shell-configuration
+
+This repository tries to document my current shell configuration.
+This is a common thing to do for people that spend a lot of time using interactive shells
+in their day to day work.
+
+Using a shell in my day to day work allows me to:
+* complete complex file and text manipulation tasks
+* interact with other command line tools
+* do remote system control
+* and many other things ...
+
+To make these tasks easier, a modern interactive shell should support some features:
+* keep track of history, across multiple terminals
+* provide auto-completion help, where it makes sense
+* provide some context sensitive history type ahead
+* support unicode symbols + graphical characters (e.g., emoji)
+* provide context information in shell prompt
+* and otherwise stay out of the way (start and run fast)
+
+Choosing a shell is a personal preference and over time becomes a tool to rely on.
+Because of this, there is no "one-size-fits-all" shell.
+
+Some common shells:
+* bash
+* zsh
+* https://fishshell.com/[fish]
+* tcsh
+* ksh
+* ... and many others ...
+
+== zsh
+
+https://www.zsh.org/[zsh] is a popular shell nowadays.  I like it because of the customizations available and the community support.
+
+Ubuntu install:
+
+----
+apt update
+apt install zsh zsh-doc
+----
+
+=== Shell Options
+
+See http://zsh.sourceforge.net/Doc/Release/Options.html#Specifying-Options[zsh Specifying Options].
+
+==== History Options
+
+----
+setopt EXTENDED_HISTORY
+alias history="history -i -D"
+setopt APPEND_HISTORY
+setopt HIST_FCNTL_LOCK
+setopt HIST_FIND_NO_DUPS
+setopt HIST_NO_STORE
+setopt HIST_REDUCE_BLANKS
+setopt HIST_SAVE_BY_COPY
+setopt INC_APPEND_HISTORY_TIME
+HISTSIZE=10000000
+SAVEHIST=10000000
+----
+
+Main thing to achieve here is:
+* keep a very long history (preferrably all the history)
+* record history from all terminals
+* record time and duration of history entries
+
+More info:
+* https://unix.stackexchange.com/questions/273861/unlimited-history-in-zsh
+* https://unix.stackexchange.com/questions/103398/how-to-view-datetime-stamp-for-history-command-in-zsh-shell
+
+
+
+=== ohmyzsh
+
+https://github.com/ohmyzsh/ohmyzsh[ohmyzsh] is almost a must have for managing zsh addons, themes, and other customizations.
+
+----
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+----
+
+=== autosuggestions
+
+After having used https://fishshell.com/[fish], I found its autosuggestions very useful.
+
+zsh has its several autosuggestion plugins:
+* https://github.com/zsh-users/zsh-autosuggestions[zsh-autosuggestions]
+* https://github.com/marlonrichert/zsh-autocomplete[zsh-autocomplete]
+* proably others
+
+----
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+----
+
+Add this to your .zshrc:
+----
+plugins=(... zsh-autosuggestions ...)
+ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion)
+----
+
+
+=== Theme
+
+----
+sudo apt-get install fonts-powerline
+----
+
+https://github.com/caiogondim/bullet-train.zsh[bullet-train]
+
+----
+BULLETTRAIN_DIR_EXTENDED="0"
+BULLETTRAIN_PROMPT_ORDER=(time status custom context dir go rust git cmd_exec_time)
+----
+
+Set terminal to 256-colors mode:
+
+----
+export TERM="xterm-256color"
+----

@@ -24,6 +24,7 @@ Choosing a shell is a personal preference and over time becomes a tool to rely o
 Because of this, there is no "one-size-fits-all" shell.
 
 Some common shells:
+
 * bash
 * zsh
 * https://fishshell.com/[fish]

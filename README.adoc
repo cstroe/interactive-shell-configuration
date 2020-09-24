@@ -5,12 +5,14 @@ This is a common thing to do for people that spend a lot of time using interacti
 in their day to day work.
 
 Using a shell in my day to day work allows me to:
+
 * complete complex file and text manipulation tasks
 * interact with other command line tools
 * do remote system control
 * and many other things ...
 
 To make these tasks easier, a modern interactive shell should support some features:
+
 * keep track of history, across multiple terminals
 * provide auto-completion help, where it makes sense
 * provide some context sensitive history type ahead
@@ -61,11 +63,13 @@ SAVEHIST=10000000
 ----
 
 Main thing to achieve here is:
+
 * keep a very long history (preferrably all the history)
 * record history from all terminals
 * record time and duration of history entries
 
 More info:
+
 * https://unix.stackexchange.com/questions/273861/unlimited-history-in-zsh
 * https://unix.stackexchange.com/questions/103398/how-to-view-datetime-stamp-for-history-command-in-zsh-shell
 
@@ -84,6 +88,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 After having used https://fishshell.com/[fish], I found its autosuggestions very useful.
 
 zsh has its several autosuggestion plugins:
+
 * https://github.com/zsh-users/zsh-autosuggestions[zsh-autosuggestions]
 * https://github.com/marlonrichert/zsh-autocomplete[zsh-autocomplete]
 * proably others
